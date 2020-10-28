@@ -30,6 +30,7 @@ body{
 //animation
 ///////////////////////////////////////////////////
 .test_1 {
+  //animation: name duration timing-function delay iteration-count direction
   animation-name: name-of-animation;
   animation-duration: .5s;
 }
@@ -49,7 +50,7 @@ body{
 }
 @keyframes name-of-animation_2{
   0% {
-
+    transform: scale (1);
   }
   100% {
 
