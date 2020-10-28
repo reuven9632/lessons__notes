@@ -23,3 +23,50 @@ body{
     font-weight: 400;       /*толщина шрифта (400-норма 700 жирный)*/
 }
 ///////////////////////////////////////////////////
+
+
+
+///////////////////////////////////////////////////
+//animation
+///////////////////////////////////////////////////
+.test_1 {
+  animation-name: name-of-animation;
+  animation-duration: .5s;
+}
+.test_2 {
+
+}
+.test_3 {
+
+}
+@keyframes name-of-animation{
+  from {
+    transform: translateX (-25px);
+  }
+  to {
+    transform: translateX (0px);
+  }
+}
+@keyframes name-of-animation_2{
+  0% {
+
+  }
+  100% {
+
+  }
+}
+@keyframes name-of-animation_3{
+  0% {
+
+  }
+  50% {
+
+  }
+  75%,
+  80% {
+
+  }
+  100% {
+
+  }
+}
