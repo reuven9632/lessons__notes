@@ -1,0 +1,72 @@
+для создания заготовки при и спользовании gulp нужно установить в проэкт особые плагины, а также Node.js (это своего рода переводчик с джава для компа так как джава 
+напрямую выпоняеться компьютером)
+1. Node.js 
+2. npm install gulp-cli -g       установить глобально. можно записать еще так    npm i gulp-cli -g     (так как вместо install можно писать i) (-g означает глобально)
+3. npm init                      инициализировать(начать) новый проэкт
+4. npm i gulp --save-dev         в консоли VisualStudio        ( --save-dev нужно для записи в файл данных о версии плагина для дальнейшей разработки и поддержки)
+5. 	создать в корневой папке файл gulpfile.js  и вписывать в него различные task такие как перевод с различных препроцессоров, watch и т.д.
+6. 	создать папку app в корневой папке для нашего проекта index.html, css, js и т. д.
+7. 	в сайте gulp есть множество плагинов на любую задачу такие как sass и т. д. то-есть плагины устанавливаем через консоль
+8. npm gulp-sass --save-dev      gulp-sass  для перевода с sass, scss и т. д. в css
+9. 	в файле gulpfile.js пишем task лдя плагина sass:
+		gulp.task('scss', function(){                             //'scss' придуманное название таска для его вызова а будет это так    gulp scss
+			return gulp.src('app/scss/**/*.scss')             //поиск в указанной папке файлы  .scss
+        			.pipe(sass({outputStyle: 'expanded'}))    //метод .pipe помещает наши файлы в определенное место где к ним будет примененны плагины..   sass конвертирует найденные ранее файлы в css     
+        			.pipe(gulp.dest('app/css'))               //gulp.dest('app/css') говорит .pipe куда поместить переведенный ранее css
+       				.pipe(browserSync.reload({stream: true})) //говорит  browserSync обновлять страницу для этого таска       
+		});
+10. 	в файле gulpfile.js пишем task 'watch' для слежения за изменениями в файле и автоматическом переводе:
+		gulp.task('watch', function(){                                  //watch уазанное нами название таска
+    			gulp.watch('app/scss/**/*.scss', gulp.parallel('scss'));//watch указывает следить за изменениями в файле 'app/scss/**/*.scss' и затем уже с помощью .parallel('*') выполнить таск 'scss' в случае изменения какого либо из файлов слежения
+    			gulp.watch('app/*.html', gulp.parallel('html'))         //тоже самое что и предыдущая строка только для 'html'
+		});
+11. 	для остановки watch нажимаем ctrl+C затем подтверждаем y
+12. 	у плагина browserSync есть свой сайт под названием BrowserSync
+13. npm i browser-sync --save-dev      установка через консоль browser-sync
+14. 	нотация кеммелкейс это написания слов слитно где первое слово с маленькой буквы а начальная буква каждого последующего слова с большой буквы
+15. 	каждому установленному плагину нужно создавать переменную
+16. 	gulp в консольном окне запустит browser-sync остановить можно как указано в пункте (11)
+17. 	!!!	для загрузки нескольких плагинов через npm можно записывать в строке через пробел	!!!
+18. 	!!!	slick-slider в npm называеться slick-carousel						!!!
+19. 	!!!	normalize в npm называеться normalize.css	(нужно для кросс браузерности)		!!!
+20. npm i normalize.css slick-carousel magnific-popup --save-dev	для загрузки трех этих плагинов последовательно и записи их версий в специальный файл package.json
+
+
+
+21. @import ""		(в файле scss) импортирует все данные файла указанного в ковычках, применяеться для конкетенации файлов
+22. 	**/    при указании пути к файлу указывает на выход в предыдущую область
+23.	указывая @import "" для slick не указывал разрешение файла css для полного его перемещенния(почему незнаю??) но возникает проблемма так как в папке slick есть два файла
+	slick.css и slick.scss	а значит выдаст ошибку так как без разрешение файла не поймет что добавить, для этого удалим slick.scss из папки slick
+24. npm i gulp-uglify gulp-concat --save-dev      gulp-uglify для минификации проэкта(сокращения кода), gulp-concat для конкатенации(обьеденения)
+25. 	[] в src() нужно для того чтобы указать несколько файлов
+
+
+26. 	сайт для сжатия картинок tinyjpg и tinypng    или https://squoosh.app/
+
+27. npm i gulp-rename --save-dev 	для переименования файлов, дополнительные функции этого плагина можно посмотреть на сайте "npm" введя gulp-rename
+
+
+28. 	для создания нового проекта переносим 3 файла: папка '/app', файл 'gulpfile.js', файл 'package.json'
+29. 	открываем консоль в папке нового проекта
+30. npm i   после этого он зайдет в файл 'package.json' и начнет устанавливать поочередно все плагины по списку в папку node_modules
+
+
+
+
+
+
+31.	на случай того что выдает ошибку   
+	Error message:
+	internal/fs/utils.js:230    throw err;     Error: ENOENT: no such file or directory, scandir '\node_modules\gulp-sass\node_modules\node-sass\vendor'
+
+	нужно ввести в терминале:
+	node node_modules/node-sass/scripts/install.js
+	npm rebuild node-sass
+
+	посмотреть по ссылке:
+	https://stackoverflow.com/questions/60204420/gulp-sass-error-file-not-found-or-missing-vendor-solution
+32.	о проблемах с нодом:
+	https://github.com/sass/node-sass/blob/master/TROUBLESHOOTING.md#debugging-installation-issues
+33.	удалить профиль git в windows для корректной записи комитов в репозиторий от соответствующего профиля:
+	https://ru.stackoverflow.com/questions/585421/%D0%9A%D0%B0%D0%BA-%D1%81%D0%BC%D0%B5%D0%BD%D0%B8%D1%82%D1%8C-%D0%B8%D0%BB%D0%B8-%D1%83%D0%B4%D0%B0%D0%BB%D0%B8%D1%82%D1%8C-%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D1%8F-%D0%B2-git-bash
+	или ввести в строку поиска:	Диспетчер учетных данных

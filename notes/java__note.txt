@@ -1,0 +1,853 @@
+1.	private/public	определяет класс как публичный или частный в котором его данные будут доступны только для него самого
+2.	типы переменных:
+			bite		от -128 до 127									//все что будет за пределами доступного будет выдавать ошибку
+			short		от -32768 до 32767						целое число
+			int		от -2147483648 до 2147483647		 			целое число
+			long		от –9 223 372 036 854 775 808 до 9 223 372 036 854 775 807 	целое число	
+			float										дробное число	//float num = 23.34f	неоходимо в конце добавлять f для коректнойработы
+			double										дробное число	//double num = 23.34d	неоходимо в конце добавлять d для коректнойработы/double - вдвое больше чем float 
+			boolean										true/false	
+			char										символ		//char newyiork = "H";
+			String										строка		//String newyiork = "Hello World";
+
+3.	import java.util.Scanner;		импортируем Scanner дляго использования
+4.	Scanner str = new Scanner(System.in);	создали обьект str(наше придуманное название)типа Scanner и присваеваем ему new Scanner(System.in)
+5.	System.in				принимет данные вводимые пользователем
+6.	System.out.println(str.nextLine());	выводим полученные данные на экран
+7. 	nextLine()				указываем каой вид данных будет выведен в данный моент Line а может быть float, int, и т.д.
+8.	System.out.println("Your sting:" + str.nextLine());	тут в двойных ковычках мы можем сами ввести текст который будет выведен на экран, + говорит о том что введеная нами строка будет выведенна
+ 								вместе с введеными пользователем данными
+
+9.	result = result + 1;	тоже самое что и	result += 1;
+	result = result + 1;	тоже самое что и	result++;
+	
+	result = result - 1;	тоже самое что и	result -= 1;
+	result = result - 1;	тоже самое что и	result--;
+
+	result = result * 1;	тоже самое что и	result *= 1;
+	result = result / 1;	тоже самое что и	result /= 1;
+10.	resulr = first % second;	//если first=10 а secon=3 то result=1
+					//если first=12 а secon=5 то result=2
+					//если first=12 а secon=7 то result=5
+					//% означает остаток от деления соответственно возвращает целое число остаток от деления
+11.	if (num == 10 && num <100)					//== обозначает равно		&& обозначает и			|| обозначает или
+		System.out.println("num is 10!!!!");			//усли в условном ореператоре есть только одна строка кода то {} не нужно но если более одной строки кода то да {} нужно
+12.	System.out.println("\n");					//   \n	выполняет функцию переноса текста на новую строку
+
+
+13.	//так же этот блок можно записать в более короткой форме как-->
+
+        trueOrfalse = first >= second ? true : false; 			//читаеться как:
+        System.out.println("first >= second, trueOrfalse = " + trueOrfalse);
+        								//trueOrfalse присвоить, если first больше или равен second, то true иначе false
+        								//= после переменной означает что ей будет присвоенно значение
+        								//? если предшествующая этому знаку проверка(first >=   second в данном случае)возвращает true то будет присвоенно первое что стоит после ?
+        								//: означает    иначе, тоесть если проверка вернеть отрицательный результат т.е. false, то будет присвоенно действие которое стоит после :
+
+14.	//еще один условный оператор switch/case
+        switch (first){     						//проверяем переменную first
+            case 51:        						//при условии что переменная равна заявленному значению будет выполненны строки кода что стоят ниже
+                System.out.println("hi duuuud \nfirst = " + first);
+                break;      						//break;  обьявляет об остановке выполнения кода при верном условии
+	    case 59:        						//при условии что переменная равна заявленному значению будет выполненны строки кода что стоят ниже
+                System.out.println("hi duuuud \nfirst = " + first);
+                break;
+            default:
+                System.out.println("hi duuuud \nfirst = " + first);     //в конце default break стакить не нужно
+
+        }
+
+
+15.	//циклы     for/while/do while
+        //если в цикле присутствует только одна строка кода то скобки ставить не обязательно
+        
+	for (int i = 1; i < 100; i++)    				//создаем или используем переменную; условие при котором будет выполняться цикл; присваеваем переменной новое значение
+            System.out.println("changes i equal = " + i);
+
+									//первый способ с проверкой
+        int j = 0;
+        while(j < 20) {
+            j++;
+            System.out.println(j);
+        }
+
+
+									//второй способ с boolean --- ВАЖНО СДЕЛАТЬ ВЫХОД ИЗ ЦИКЛА ИНАЧЕ ОН БУДЕТ ВЫПОЛНЯТЬСЯ БЕСКОНЕЧНО
+        boolean isthrue = true;
+        j = 0;
+        while(isthrue){
+            j++;
+            System.out.println(j);
+            if(j > 20)
+                isthrue = false;
+        }
+16.	операторы break/return/continue
+	break/return это операторы остановки выполнения кода, в данный момент лучше везде использовать break
+	continue	это оператор остановки выролнения кода при какомто конкретном условии
+	int m = 0;
+        while(m < 20) {
+            m++;
+            if(m % 2 == 0)
+                continue;                       //пример использования  continue; для пропуска определенных условий
+            System.out.println("m equal = " + m);
+        }
+
+		m equal = 1
+		m equal = 3
+		m equal = 5
+		m equal = 7
+		m equal = 9
+		m equal = 11
+		m equal = 13
+		m equal = 15
+		m equal = 17
+		m equal = 19
+
+17.	массив
+	//отсчет в массиве начинаеться с 0 т.е. 4 элемента будут как a[0],a[1],a[2],a[4]
+18.	int[] a;
+	int[] a = new int[4];
+	int[] a = new int[] {23, 43, 53};
+	float[] a = new float[] {23.85f, 43.05f, 53.78f};
+	a[i] = 55;
+19.	System.out.print(a[1]);        				//способ вывода на экран
+
+20.	
+	Scanner scanUserData = new Scanner(System.in);
+	
+	int[] arrayName;
+	int numItems;
+	System.out.println("enter how much items you want");
+	numItems = scanUserData.nextInt();
+	for(int i = 0; i < numItems; i++){
+		System.out.println("enter item # [" + (i + 1) + "]:");
+		arrayName[i] = scanUserData.nextInt();
+	}
+	
+
+
+21.	//создание функций
+        /*int temp = func (3, 4);
+        Scanner UserData = new Scanner(System.in);
+        System.out.print("enter nupber and after his power: ");
+        func(UserData.nextInt(), UserData.nextInt());
+        //or
+        System.out.print("enter nupber and after his power: ");
+        temp = func(UserData.nextInt(), UserData.nextInt());
+        //or
+        System.out.print("enter nupber and after his power: ");
+        System.out.println(func(UserData.nextInt(), UserData.nextInt()));//ели в фенкции не указан вывод данных
+
+        powerArray();*/
+
+
+
+    }//		!!!!закрылась функция main	остальное пишеться в пределах класса Main, но за пределами  функция main!!!!!
+        //создание функций
+        //      функции не должны описываться одна в дугой хотя не ограниченны использованием одна в другой
+        public static int[] powerArray () {
+            int[] funcArray;
+            int number;
+            Scanner readUserData = new Scanner(System.in);
+            System.out.println("How much elements of array you wont? ");
+            number = readUserData.nextInt();
+            funcArray = new int[number];
+            for (int i = 0; i < funcArray.length; i++){
+                System.out.println("enter element #" + (i+1) + ": ");
+                funcArray[i] = readUserData.nextInt();
+            }
+            for (int i = 0; i < funcArray.length; i++){
+                System.out.println("element of array #" + (i+1) + ": " + funcArray[i]);
+            }
+            return funcArray;
+        }
+
+        public static int func(int a, int b) {
+            int numberPower = 1;
+            for (int i = 0; i < b; i++)
+                numberPower *= a;
+            System.out.println("number " + a + " of power " + b + " is equal = " + numberPower);
+            return numberPower;
+        }
+
+
+
+22.	package com.company;
+
+	
+	public class Human {
+    	public  int height = 180;
+    	public  int width = 45;
+    	public  Boolean race = true;//true -- male, false -- fimale
+
+	    //классы
+	    //создавая новый класс нужно оьявить его pulic так как иначе все его функции и переменные не будут видны в других классах
+	    //переменные записанные в классе принято называть полями(переменные --  полями), а функции --  методами
+	    //имя классу принято давать с большой буквы, последующие слова в названии пишуться с большой буквы и слитно или
+	    //нижнее подчеркивание и с маленькой буквы      пример:
+	    //Person        or      PersonHuman     or      Person_human
+	}
+
+
+23.	//конструкторы1.1
+
+	Main.java
+	        Student frefhman = new Student(1, "viktor"); //нужно разблокировать соответствующие конструкторы в Human и Student
+
+	Human.java
+		public Human(int aa, String bb) {
+        	System.out.println("CONSTRUCTOR OF HUMAN a/b");
+        	this.a = aa;
+        	this.b = bb;
+    		}
+
+	Student.java
+		public Student (int b, String a) { //главное при подобном использовании super(i, j) i and j при указании
+        	// конструктора этого класса должны соответствовать вне зависимости от имени переменных передавародительского класса
+        	// нужно создать соответствующий конструктор в родительском классе с присвоением переменных
+        	super(b, a);
+        	System.out.println("a = " + super.a + " ; and b = " + super.b);
+    		}
+
+
+23.	//конструкторы1.2
+	Human.java
+    		//модификатор доступа затем имя его класса
+    		//это конструктор по умолчанию даже не записывая его он имеет место быть
+    		public Human () {}
+
+
+    		//сам определяет по введеным данным к какому конструктору относиться
+    		//конструктор с вводом данных одной целой переменной
+    		public Human (int h) {
+        		height = h;
+    		}
+
+    		public Human (String name) {
+        		this.name = name;
+    		}
+
+	    	public Human (String nameOfUser, int h) {
+	
+        		name = nameOfUser;
+        		height = h;
+    		}
+
+    		public Human(int aa, String bb) {
+        		System.out.println("CONSTRUCTOR OF HUMAN a/b");
+        		this.a = aa;
+        		this.b = bb;
+    	}
+24.	//конструкторы1.3
+
+	Student.java
+		public Student () {
+        	System.out.println("student " + name + " on couse #: " + (this.course = course));
+		}
+
+	    	public Student (int course) {
+	        	System.out.println("student " + name + " on couse #: " + (this.course = course));
+	        	this.course = course;   //при использовании одинаковых имен переменных в конструкторе и классе то используем метод
+	        	//this. для указания что эта переменная принадлежит классу в котором храниться
+	    	}
+	
+	    	public Student (String name) {
+	        	System.out.println("name of student is " + name + " hi is sudy on couse #: " + (this.course = course));
+	        	super.name = name;      //при использовании одинаковых имен переменных в конструкторе и классе !!родителе!! то используем метод
+	        	//super. для указания что эта переменная принадлежит классу !!родителю!! в котором храниться
+	    	}
+
+
+
+25.	//полиморфизм на примере классов Paper в котором Sircle и Triangle применяют ощий метод со своими параметрами
+	Main.java
+        	Paper array[] = new Paper[] {new Sircle(), new Triangle(), new Sircle()};
+	        for (int i = 0; i < array.length; i++) {
+	            array[i].draw();
+	        }
+
+	Paper.java
+		public class Paper {
+		    public void draw() {}
+		}
+
+	Sircle.java
+		public class Sircle extends Paper{
+		    public void draw () {
+	        	System.out.println("Sircle");
+	    	    }
+		}
+
+	Triangle.java
+		public class Triangle extends Paper{
+		    public void draw () {
+		        System.out.println("Triangle");
+		    }
+		}
+
+26.	//Анонимные классы и вложенные классы
+	Main.java
+        	Computer comp = new Computer(); 			// переменная представляющая конкретный компьютер
+	        String comp_On_Or_Off;          			// переменная представляющая ответ пользователя включить или выключить компьютер
+	        Scanner userData = new Scanner(System.in);  		// сканирование данных введеных пользователем
+	        System.out.println("you wont power on computer? (y/n)");//запрос
+	        comp_On_Or_Off = userData.nextLine();       		//присвоение данных пользователя соответствующей переменной о вкл.\выкл.
+	        if (comp_On_Or_Off.equals("y"))
+	            comp.startComputer();
+	        else if (comp_On_Or_Off.equals("n"))
+	            comp.offComputer();
+	        else
+	            System.out.println("error of this kind does not exist");
+
+	Computer.java
+		public class Computer {
+    			private boolean powerOn = false;		//переменная powerOn являеться показателем включения или выключения
+	    		Processor i7 = new Processor();
+			Ram matrix256 = new Ram();
+
+			public void startComputer () {			//функция start включает присваивая  powerOn --> true
+        			powerOn = true;
+        			System.out.println("powerOn of Computer is " + powerOn);
+        				this.i7.start();
+        				this.matrix256.start();
+   			}
+    			public void offComputer () {			//функция off выключает присваивая  powerOn --> false
+        			powerOn = false;
+        			System.out.println("powerOn of Computer is " + powerOn);
+        			this.i7.off();
+        			this.matrix256.off();
+    			}
+    		class Processor {
+        		rivate boolean powerOn = false;//переменная powerOn являеться показателем включения или выключения
+
+        		public void start () {//функция start включает процессор присваивая  powerOn --> true
+            			powerOn = true;
+            			System.out.println("Processor is on");
+        		}
+        		public void off () {//функция off выключает процессор присваивая  powerOn --> false
+            			powerOn = false;
+            			System.out.println("Processor is off");
+        		}
+    		}
+
+    		class Ram {
+        		private boolean powerOn = false;//переменная powerOn являеться показателем включения или выключения
+
+        		public void start () {//функция start включает присваивая  powerOn --> true
+            		powerOn = true;
+            		System.out.println("Ram is on");
+        		}
+        		public void off () {////функция off выключает присваивая  powerOn --> false
+            		powerOn = false;
+            		System.out.println("Ram is off");
+
+        		}
+    		}
+
+
+	}
+
+
+
+27.	//Абстрактные классы
+
+
+	Main.java
+        	Geometric_Figure square = new Square_Figure(); 	//создаем переменную square абстрактного класса Geometric_Figure,
+        							// но разрешение переменной указываем !!!не родительского класса Geometric_Figure!!!, !!!а дочернего Square_Figure!!!
+        	square.draw_Figure();				//вызов фенкции которая нарисует наш квадрат
+
+
+	Geometric_Figure.java
+		package com.company;
+								//абстрактный метод должен содержаться в абстрактном классе
+								//записываються методы а их реализация происходит в дочерних классах
+		public abstract class Geometric_Figure {
+    			public abstract void draw_Figure (); 	//у абстрактного метода вконце ставиться ;
+		}
+
+
+	Square_Figure.java
+		package com.company;
+		import java.util.Scanner;
+
+		public class Square_Figure extends Geometric_Figure{
+    			public void draw_Figure () { 		//описание абстрактного метода draw_Figure реализуеться тут
+        			int anglesOfFigure;
+        			Scanner UserData = new Scanner(System.in);
+        			System.out.println("How many angles does a geometric figure have? ");
+        			anglesOfFigure = UserData.nextInt();
+        			if (anglesOfFigure == 4)
+            				System.out.println("Figure is square");
+        			else
+            				System.out.println("error of this kind does not exist");
+    			}
+		}
+
+28.	//перегрузка функций 1.1
+	Main.java
+        	OverloadFunction sumOfNumber = new OverloadFunction();
+        	sumOfNumber.out();
+	package com.company;
+
+
+	OverloadFunction.java
+		public class OverloadFunction {
+    			public static int summ (int a, int b) {
+        			return a + b;
+   		}
+    			public static int summ (int a, int b, int c) {
+        			return a + b + c;
+    			}
+    			public static float summ (float a, float b, float c) {
+        			return a + b + c;
+    			}
+    			public void out () {
+        			System.out.println(summ(11,22));
+        			System.out.println(summ(11,22, 33));
+        			System.out.println(summ(11.22f,22.33f, 33.44f));//важно добавлять f в конце после каждого числа!!!
+        									//System.out.println должна находиться в методе для коректной работы!!!
+
+    			}
+		}
+
+
+
+
+
+		ИЛИ
+
+
+
+
+
+	//перегрузка функций 1.2
+	Main.java
+		package com.company;
+		import java.util.Scanner;
+
+		public class Main {
+    			public static int summ (int a, int b) {
+        			return a + b;
+    			}
+    			public static int summ (int a, int b, int c) {
+			        return a + b + c;
+			}
+			public static float summ (float a, float b, float c) {
+			        return a + b + c;
+			}
+
+
+
+    			public static void main(String[] args) {
+        			System.out.println(summ(11, 22));
+        			System.out.println(summ(11, 22, 33));
+        			System.out.println(summ(11.22f, 22.33f, 33.44f));
+			}
+		}
+
+
+29.	static пишеться  после public и обозначает что метод доступен всем соответственно его можно вызывать не создавая переменную класса, но есть определенная загвоздка
+	при изменении параметров метода они изменяються у всех, так придав х = 12 (изначально) затем переназначив х = 34, даже созда новую переменную и обратившись к иксу(х) он будет изначально равен
+	тому значению которое было определенно в последний раз. Т.е. х = 34
+30.	final  так же как и static пишеться  после public и обозначает что 
+	ели это класс:	у него не может быть наследников
+	ели это метод:	его нельзя перераспределить как на примере с drow где создавался пустой метод а потом в других дочерних классах переопределяеться, при использовании final так сделать будет нельзя
+	ели это переменная: являеться константой и ее нельзя переопределять
+
+31.	создание интерфейса: 	как и класса одно и тоже за исключение что пропивысаеться не класс а ставилься в поле интерфейс
+				public interface SomeInterfase {}
+32.	свойства интерфейса: 	в нем реализуються методы и поля с помошью static и final
+				static являеться стандартным и его писать не обязательно -->    static int a = 10;	-->	int a = 10;		//поле
+												static int a (int i);	-->	int a (int i);		//метод возвращает int
+												static void a (int i);	-->	int a (int i);		//метод не возвращает ничего
+
+
+											НО ЕСЛИ final ТО НУЖНО ПИСАТЬ
+
+
+												final int a = 10;	-->				//поле
+												final int a (int i);	-->				//метод возвращает int
+												final void a (int i);	-->				//метод не возвращает ничего
+				классы которые будут реализовывать интерфейс нужно подключать не как наследников extends а как implements т.е. реализовывает интерфейс 
+											public class SomeClass implements SomeInterface {}
+
+		Main.java
+			package com.company;
+
+			public class Main {
+    			
+
+    				public static void main(String[] args) {
+        				Array arr = new Array1(); 	//в указании переменной интерфейса важно написать класс-метод который описывает данный интерфейс
+									//т.е. класс Array абстрактный, arr его переменная, = new выделяем память для данной переменной, Array1 класс-метод который описывает данный интерфейс
+        				arr.addElementArray(55);	
+        				arr.addElementArray(54);
+        				arr.addElementArray(53);
+        				arr.addElementArray(52);
+        				System.out.println("Element of array nomber 2 is " + arr.getElementArray(2));
+				}
+			}
+
+
+		
+		Array.java
+			package com.company;
+
+			public interface Array {
+    				int     getElementArray (int i);
+    				boolean addElementArray (int val);
+			}
+
+
+
+
+		Array1.java
+			package com.company;
+
+			public class Array1 implements Array{
+    				int array[] = new int[10];
+    				int elementArray = 0;
+
+    				@Override
+    				public int getElementArray(int i) {
+        				return array[i];
+    				}
+
+    				@Override
+    				public boolean addElementArray(int val) {
+        				if (elementArray != array.length) {
+            					array[elementArray] = val;
+            					elementArray++;
+            					System.out.println("You are entered nomber: " + val + ";");
+            					return true;
+        				}
+        				else
+            					return false;
+    					}
+				}
+
+
+		Array2.java
+			package com.company;
+
+			public class Array2 implements Array{
+    			int array[] = new int[5];
+    			int elementArray = 0;
+
+    			@Override                       	//нужно добавлять как показатель что это описание метода интерфейса
+    			public int getElementArray (int i) {
+        			if (i < 0 && i > array.length) {
+            				System.out.println("Error 404");
+            				return 0;
+        			}
+        			else {
+            				return array[i];
+        			}
+    			}
+
+    			@Override                       	//нужно добавлять как показатель что это описание метода интерфейса
+    			public boolean addElementArray (int val) {
+        			if (elementArray != array.length) {
+            				array[elementArray] = val;
+            				elementArray++;
+            				return true;
+        			}
+        			else
+            				return false;
+    				}
+			}
+
+
+
+
+
+
+
+
+		
+
+33.	//SimpleGUI
+
+
+	Main.java
+	package com.company;
+
+	public class Main {
+    			
+
+    		public static void main(String[] args) {
+        		SimpleGUI testGUI = new SimpleGUI();
+        		testGUI.setVisible(true);
+		}
+	}
+
+	
+
+
+
+	SimpleGUI.java
+		package com.company;
+
+		import java.awt.*;
+		import java.awt.event.*;			//библиотека отслеживания нажатия на кнопки
+		import javax.swing.*;				//библиотека для созданитя формочек: надпись, кнопка, поле и ...
+
+
+
+		public class SimpleGUI extends JFrame{ 								//наследуем класс JFrame для созданитя формочек: надпись, кнопка, поле и ...
+		    	private final JButton button = new JButton ("Press");					//создаем кнопку с помощю библиотеки javax.swing.*класса JFrame,
+		    	// методом под названием JButton, при создании передаем параметр текст который будет написан !!на кнопке!!
+
+	    		private final JTextField input = new JTextField ("", 5);				//создаем поле которое не будет подписанно так
+    			// как мы не ввели данные в ковычки, и размер будет 5 колонок
+
+    			private final JLabel label = new JLabel ("Input");					//создаем надпись которую к примеру можно будет
+    			// использовать для формы(поля input )
+
+    			private final JRadioButton radio1 = new JRadioButton ("Select this if your man");	//JRadioButton применяеться как кругляшка в которой
+    			private final JRadioButton radio2 = new JRadioButton ("Select that if your woman");	//можно выбирать к примеру какой пол мужской или женский
+
+			private final JCheckBox check = new JCheckBox ("Check", false);	//JCheckBox это как квадратик для того чтобы ставить галочку
+    			//выбираем какой текст написать к примеру "Check" и ставим false для того чтобы изначально галочка !!!не была потавленна!!!
+
+
+
+			//создаем конструктор который будет вызываться при создании обьекта
+    			public SimpleGUI () {
+        			super("simple Example");	//вызываем super, для того чтобы сдвинуться к конструктору в основном нашем классе JFrame
+        							//в конструктор JFrame передаем просто название нашего конмтруктора
+
+        							//а теперь работаем с конструктором данного класса SimpleGUI
+        			this.setBounds(100, 100, 250, 100);		//setBounds указывает положение где будет находиться
+        									// наша форма (Х и У) а также ширина (width) и высота (height)
+
+        			//Создаем операцию которая при выполнении которой будет закрывать форму
+        			this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);	//JFrame.EXIT_ON_CLOSE если мы закроем нашу форму то она закроеться
+
+
+
+        			Container container = this.getContentPane();	//посути это и есть наш контейнер в котором находиться форма в которой кнопки поля и т. д.
+        			container.setLayout(new GridLayout(3,2,0,2));	//создаем размеры формы строки, колонки, отступы по вертикали и по горизонтали
+
+        			container.add(label);		//с помощю метода add добавляем в окно (форма) название (label) от  (input), а так же можно добавлять многое другое
+        			container.add(input);		//теперь добавляем (input) и т.д.
+
+
+
+        			ButtonGroup group = new ButtonGroup ();	//для того чтобы при нажатии один из вариантов выделялся а второй
+        							// переставал быть выделенным используем ButtonGroup
+        			group.add(radio1);		//добавил ввриант выбора  radio1
+        			group.add(radio2);		//добавил ввриант выбора  radio2
+        			container.add(radio1);		//добавил кнопку radio1 container
+        			radio1.setSelected(true);	//для того чтобы она была уже выбранна ставим true в методе setSelected
+        			container.add(radio2);		//добавил кнопку radio2 container
+        			container.add(check);		//добавил квадратик для того чтобы ставить галочку
+        			button.addActionListener(new ButtonEventListener ());	//присваиваю кнопке button метод addActionListener для вызова другого класса в котором
+        							// будет реализация действия, и записываем в круглые скобки тот самый клас с помощью которого будет реализованно действие
+        							//ButtonEventListener это вымышленный мной класс(нужно создать и описать действие)
+        			container.add(button);		//добавляю кнопку button в container
+    			}
+
+    			class ButtonEventListener implements ActionListener {
+        			public void actionPerformed(ActionEvent e) {
+            				String message = "";
+            				message += "button was pressed\n";
+            				message += "the text is " + input.getText() + "\n";
+            				message += (radio1.isSelected() ? "radio1" : "radio2") + " is selected\n";
+            				message += "SelectBox is" + (check.isSelected() ? "checked" : "unchecked");
+            				JOptionPane.showMessageDialog(null, message, "OUTPUT", JOptionPane.PLAIN_MESSAGE);
+            							//JOptionPane создает новое окно в котором будет выведенно сообщение с помощью .showMessageDialog, а внутри
+            							// круглых скобок указываем параметры, первый это свои данные, потом что выводим, название, и вид того что
+            							// будет выведенно(пролстое сообщение)
+        			}
+    			}
+		}
+
+
+
+
+
+
+
+34.		//ArrayList
+
+
+			import java.util.ArrayList;
+			import java.util.LinkedList;
+
+
+        		ArrayList<Integer> someDynamicArray = new ArrayList<>();
+        		//создаю динамический массив ArrayList у которого в таких <> скобках передаеться параметр  переменной которая будетв нем храниться
+        		// в данном случае это int но нужно писать полное название Integer, так же как и String и т.п., затем название переменной, выделить
+        		// память с помощью new ArrayList<> (в ранней версии нужно было в таких <> скобках передать параметр Integer,но сейчас можно оставить их пустыми),
+        		// а в круглых передаеться изначальный размер массива, причем неважно что он будет позже больше или меньше тут просто выделяеться изначальный обьем памяти
+	
+        		someDynamicArray.add(53);
+        		someDynamicArray.add(564);
+        		someDynamicArray.add(53);
+        		someDynamicArray.add(53446);
+        		someDynamicArray.add(5223);
+        		someDynamicArray.add(5);
+        		someDynamicArray.add(3);
+
+        		/*someDynamicArray.remove(2);		//удатить конкретный эллемент массива,т.к. массив начинаеться с нуля то удалиться третий*/
+        		/*someDynamicArray.clear();		//для того чтобы удалить все элементы массива*/
+
+
+        		for (Integer x : someDynamicArray) {	//создал переменную типа Integer x (как и мой массив) ,
+            							// : someDynamicArray   -  и она (переменная х) будет получать данные с массива
+
+            		System.out.println(x);
+        		}
+
+
+
+35.		//LinkedList
+
+
+			import java.util.ArrayList;
+			import java.util.LinkedList;
+
+
+        		//LinkedList ничем по большому счету не отличаеться от ArrayList кроме:
+        		// LinkedList быстрее записывает элементы в массив, а ArrayList быстрее их находит в массиве,
+        		// LinkedList можно выбирать случайные эллементы (rendom), а ArrayList такого нет
+        		LinkedList<String> someLinkedArray = new LinkedList<>();//в LinkedList не нужно писать в круглых скобках начальный размер массива
+
+        		someLinkedArray.add("Miki");
+        		someLinkedArray.add("Derekh");
+        		someLinkedArray.add("David");
+        		someLinkedArray.add("Rozy");
+
+
+        		someLinkedArray.add(2, "Fill");
+        		//для того чтобы добавить новый элемент масива в конкретную ячейку,
+        		// те эллементы которые будут на его мести и далее сдвинуться к концу массива
+
+        		/*someLinkedArray.remove(2);//удатить конкретный эллемент массива,т.к. массив начинаеться с нуля то удалиться третий*/
+        		/*someLinkedArray.clear();//для того чтобы удалить все элементы массива*/
+
+
+        		//создал переменную типа String x (как и мой массив) , : someLinkedArray   -  и она (переменная х) будет получать данные с массива someLinkedArray
+        		for (String x : someLinkedArray) {
+            			System.out.println(x);
+        		}
+
+
+
+36.		//Try/Catch
+	Main.java
+	
+		ExceptionsTryCatch testExceptions = new ExceptionsTryCatch();
+        	testExceptions.testTryCach();
+
+
+        	/*int array[] = new int[]{23, 55, 43};
+        	int n = 3;
+        	try {
+            		System.out.println("array #" + n + array[n]);
+        	} catch (ArithmeticException e) {
+            		System.out.println("Error" + e);
+        	}*/
+
+
+	ExceptionsTryCatch.java
+		//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		package com.company;
+		//реализация try/catch может как и многие другие реализовываться в отдельном классе а затем вызвать их через создание переменной
+		// этого клаасса и вызов соответствующего метода или записать в Main так:
+  		/*
+  		public class Main {
+    		int array[] = new int[]{23, 55, 43};
+    		int n = 3;
+    		try {
+    			System.out.println("array #" + n + array[n]);
+    		}
+    		catch (ArithmeticException e) {
+    			System.out.println("Error" + e);
+    		}
+    		catch (ArrayIndexOutOfBoundsException e) {
+    			System.out.println("Error:: ---> ___> ---> " + e);
+    		}
+  		}*/
+		//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////	
+		public class ExceptionsTryCatch {   //создал класс ExceptionsTryCatch для реализации метода  try/catch
+    			int[] array = new int[]{23, 55, 43};
+    			//в дальнейшем в методе try/catch буду использовать заранее неверное действие  -  вывод
+    			// несуществующей переменной и затем в catch буду ее овить и указывать действие при ее обнаружении
+    			int n = 3;
+
+    			public void testTryCach () {
+        			//try тут пишу код который хочу проверить на наличие ошибок
+        			try {
+            				System.out.println("array #" + n + array[n]);
+        			}
+        			//catch (ArithmeticException e) тут передаю вид ошибки которая может произойти в ходе выполнения
+        			// кода и {указываю действие при нахождении этой ошибки}
+
+
+        			//кол-во catch неограниченно, можно искать разные ошибки
+        			//Если не знаю название ошибки то можно запустить код и при опредеоении определенного вида ошибки в RUN будет указанно
+        			//названиеи строка кода, таким образом можно скопировать это название и передать как параметр в круглых скобках "кетча"
+        			catch (ArithmeticException e) {
+            				System.out.println("Error" + e);
+        			}
+        			catch (ArrayIndexOutOfBoundsException e) {
+            				System.out.println("Error:: ---> ___> ---> " + e);
+        			}
+    			}
+		}
+
+
+
+37.	//Запись и чтение данных из файлов (Java io)
+	Main.java
+		package com.company;
+
+		import java.io.BufferedReader;
+		import java.io.File;
+		import java.io.FileReader;
+		import java.io.IOException;
+		import java.io.PrintWriter;
+
+		public class Main {
+
+		    public static void main(String[] args) {
+		        BufferedReader test_buffered_reader = null;                                                  //переменная типпа BufferedReader создаю пустой(null)
+		        try {
+		            File test_file = new File("New_Test_File.txt");                                 //создание переменнтой file типа File, передаем в конструктор имя файла или каталога
+
+		            PrintWriter test_print_writer = new PrintWriter(test_file);                              //создание переменнтой test_print_writer типа PrintWriter, передаем в конструктор имя файла или каталога
+		            test_print_writer.println("Hi, we are created new file");                                //имя переменной от PrintWriter.println("даннные которые вводяться в строку файла");
+		            test_print_writer.println("test_created of String");
+		            test_print_writer.close();                                                               //всегда нужно закрывать файл после его использования
+		            if (!test_file.exists()) {                                                               //exists() от библиотеки import java.io.File;  проверяет что файл создан
+
+		                test_file.createNewFile();                                                           //createNewFile() создает новый файл по пути, который передан в конструктор
+		            }
+		            test_buffered_reader = new BufferedReader(new FileReader("New_Test_File.txt"));
+		            String line;
+		            while ((line = test_buffered_reader.readLine()) != null) {                              //создал строку line в которую буду записывать строки из файла .readLine() пока не будет строка равна пустоте т.е. файл закончился != null
+		                System.out.println(line);
+	
+		            }
+		        } catch(IOException e){                                                                     //IOException e подчеркиваеться красным в двух случаях: если не добавили import java.io.IOException;
+		                                                                                                    //или проверка по мнению компилятора базсмысленна, но если добавить создание файла то проверка на ошибку его создания приобретает смысл и ошибка исчезает
+		            System.out.println("Error is : " + e);
+		        } finally {
+				try {
+			                test_buffered_reader.close();
+			        }   catch (IOException e) {
+			                System.out.println("Error :" + e);
+			        }
+		        }
+
+		    }
+		}
+
+		
+
+
+
+	
