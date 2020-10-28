@@ -32,7 +32,7 @@ body{
 .test_1{
   /* //animation: name duration timing-function delay iteration-count direction; */
   animation-name: name-of-animation;
-  animation-duration: .5s;
+  animation-duration: 1.5s;
 }
 .test_2{
 
@@ -43,9 +43,15 @@ body{
 @keyframes name-of-animation {
   from{
     transform: translateX(-225px);
+    color: transparent;             /*убираю цвет текста*/
+    background: transparent;        /*убираю цвет заднего фона для начала анимации, чтобы текст появлялся*/
+  }
+  45%{
+    color: #000;                  /*возвращаю цвет текста*/
+    background: #fff;             /*возвращаю цвет заднего фона*/
   }
   75%{
-    transform: translateX(50px);
+    transform: translateX(50px);    
   }
   to{
     transform: translateX(0px);
@@ -53,7 +59,7 @@ body{
 }
 @keyframes name-of-animation_2{
   0%{
-    transform: scale (1);
+    transform: scale(1);            /*scale -- увеличивает текст*/
   }
   100%{
 
