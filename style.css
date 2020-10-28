@@ -1,5 +1,5 @@
-///////////////////////////////////////////////////
-//reset styles
+/* /////////////////////////////////////////////////// */
+/* //reset styles */
 *{
     box-sizing: border-box;  /*сброс стилей(один из способов)*/
 }
@@ -22,52 +22,58 @@ li{
 body{
     font-weight: 400;       /*толщина шрифта (400-норма 700 жирный)*/
 }
-///////////////////////////////////////////////////
+/* /////////////////////////////////////////////////// */
 
 
 
-///////////////////////////////////////////////////
-//animation
-///////////////////////////////////////////////////
-.test_1 {
-  //animation: name duration timing-function delay iteration-count direction
+/* /////////////////////////////////////////////////// */
+/* //animation */
+/* /////////////////////////////////////////////////// */
+.test_1{
+  /* //animation: name duration timing-function delay iteration-count direction; */
   animation-name: name-of-animation;
   animation-duration: .5s;
 }
-.test_2 {
+.test_2{
 
 }
-.test_3 {
+.test_3{
 
 }
-@keyframes name-of-animation{
-  from {
-    transform: translateX (-25px);
+@keyframes name-of-animation {
+  from{
+    transform: translateX(-225px);
   }
-  to {
-    transform: translateX (0px);
+  75%{
+    transform: translateX(50px);
+  }
+  to{
+    transform: translateX(0px);
   }
 }
 @keyframes name-of-animation_2{
-  0% {
+  0%{
     transform: scale (1);
   }
-  100% {
+  100%{
 
   }
 }
 @keyframes name-of-animation_3{
-  0% {
+  0%{
 
   }
-  50% {
+  50%{
 
   }
   75%,
-  80% {
+  80%{
 
   }
-  100% {
+  100%{
 
   }
 }
+/* /////////////////////////////////////////////////// */
+/* //ANDanimation */
+/* /////////////////////////////////////////////////// */
