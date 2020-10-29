@@ -17,7 +17,7 @@ li{
     max-width: 1170px;      /*максимальная ширина блока*/
     margin: 0 auto;         /*один из способов выравнивания столбца/блока по центру*/
     padding: 0 15px;
-    
+    /*text-align: center;*/
 }
 body{
     font-weight: 400;       /*толщина шрифта (400-норма 700 жирный)*/
@@ -30,9 +30,16 @@ body{
 /* //animation */
 /* /////////////////////////////////////////////////// */
 .test_1{
-  /* //animation: name duration timing-function delay iteration-count direction; */
   animation-name: name-of-animation;
   animation-duration: 1.5s;
+  text-align: center;
+         /*animation: name duration timing-function delay iteration-count direction; */
+         /*duration -  время за которое будет происходить анимация*/
+         /*timing-function -  */
+         /*delay -  время задержки после которого будет происходить анимация*/
+         /*iteration-count  -  количество раз сколько будет воспроизводиться анимация*/
+         /*animation-direction: alternate определяет что по окончании анимации плавно вернеться*/
+         /*animation-fill-mode: forwards;    -  оставляет последние настройки которые заданны анимации*/
 }
 .test_2{
   animation: name-of-animation_2 1.5s; /*запись animation более короткая объединяет название и время(полное описание animation смотри на пару строк выше)*/
