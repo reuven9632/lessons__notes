@@ -17,7 +17,7 @@ li{
     max-width: 1170px;      /*максимальная ширина блока*/
     margin: 0 auto;         /*один из способов выравнивания столбца/блока по центру*/
     padding: 0 15px;
-    /*text-align: center;*/
+    text-align: center;
 }
 body{
     font-weight: 400;       /*толщина шрифта (400-норма 700 жирный)*/
@@ -32,7 +32,7 @@ body{
 .test_1{
   animation-name: name-of-animation;
   animation-duration: 1.5s;
-  text-align: center;
+  
          /*animation: name duration timing-function delay iteration-count direction; */
          /*duration -  время за которое будет происходить анимация*/
          /*timing-function -  */
@@ -43,9 +43,11 @@ body{
 }
 .test_2{
   animation: name-of-animation_2 1.5s; /*запись animation более короткая объединяет название и время(полное описание animation смотри на пару строк выше)*/
+  margin-bottom: 250px;
 }
 .test_3{
-
+  margin-top: 300px;
+  animation: name-of-animation_3 3s;
 }
 @keyframes name-of-animation {
   from{
@@ -74,17 +76,20 @@ body{
 }
 @keyframes name-of-animation_3{
   0%{
-
+    transform: translateY(-3000px);
   }
   50%{
-
+    transform: translateY(50px);
   }
   75%,
   80%{
-
+    transform: translateY(-250px);
+  }
+  90%{
+    transform: translateY(10px);
   }
   100%{
-
+    transform: translateY(0);
   }
 }
 /* /////////////////////////////////////////////////// */
