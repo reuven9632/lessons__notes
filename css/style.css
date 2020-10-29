@@ -93,5 +93,34 @@ body{
   }
 }
 /* /////////////////////////////////////////////////// */
-/* //ANDanimation */
+/* animation of test-muving*/
+/* /////////////////////////////////////////////////// */
+.test-muving{
+  background-color: #34fw67;
+  width: 150px;
+  height: 100px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+  align-items: center;
+  overflow: hidden;      /*нужно для создания рамок блока, выходя за которые всё будет исчезать*/
+  position: relative;
+}
+.test-muving::hover .test-muving__img-1{ /*когда родительский класс принимает hover, одечерний принимает стили */
+  transform: translateY(-3000px);
+}
+.test-muving__img-1{
+  transition: all .6s;
+}
+.test-muving__text{
+  position: absolute;
+  left: 30px;
+  bottom: 25px;
+  font-size: 40px;
+  font-family: sans-serif;
+  color: yellow;
+}
+/* /////////////////////////////////////////////////// */
+/* ANDanimation */
 /* /////////////////////////////////////////////////// */
