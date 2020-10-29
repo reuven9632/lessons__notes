@@ -35,8 +35,7 @@ body{
   animation-duration: 1.5s;
 }
 .test_2{
-  animation-name: name-of-animation_2;
-  animation-duration: 1.5s;
+  animation: name-of-animation_2 1.5s; /*запись animation более короткая объединяет название и время(полное описание animation смотри на пару строк выше)*/
 }
 .test_3{
 
@@ -60,10 +59,10 @@ body{
 }
 @keyframes name-of-animation_2{
   0%{
-    transform: scale(.3);            /*scale -- увеличивает текст*/
+    transform: scale(1);            /*scale -- увеличивает текст*/
   }
   100%{
-    transform: scale(1.2);
+    transform: scale(3);
   }
 }
 @keyframes name-of-animation_3{
