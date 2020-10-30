@@ -96,9 +96,9 @@ body{
 /* animation of test-muving*/
 /* /////////////////////////////////////////////////// */
 .test-muving{
-  background-color: #34fw67;
+  background-color: #33da8c;
   width: 150px;
-  height: 100px;
+  height: 150px;
   margin: 0 auto;
   display: flex;
   justify-content: center;
@@ -107,17 +107,18 @@ body{
   overflow: hidden;      /*нужно для создания рамок блока, выходя за которые всё будет исчезать*/
   position: relative;
 }
-.test-muving::hover .test-muving__img-1{ /*когда родительский класс принимает hover, одечерний принимает стили */
+.test-muving:hover .test-muving__img-1{ /*когда родительский класс принимает hover, одечерний принимает стили */
   transform: translateY(-3000px);
 }
 .test-muving__img-1{
-  transition: all .6s;
+  transition: all .6s cubic-bezier(0.49, 0, 0.32, 0.86); /*cubic-bezier(0.49, 0, 0.32, 0.86)  -  определяет правность выполнения анимации, записываеться в свойство timing-function анимации*/
+  width: 150px;
 }
 .test-muving__text{
   position: absolute;
   left: 30px;
   bottom: 25px;
-  font-size: 40px;
+  font-size: 10px;
   font-family: sans-serif;
   color: yellow;
 }
