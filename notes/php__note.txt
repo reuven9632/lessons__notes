@@ -18,8 +18,12 @@ fseek($File, 2);                      //fseek(ИМЯ ФАЙЛА, КУДА ПЕР
 fclose($file);                        //в конце использования данных нужно обязательно закрывать файл
 
 
-file_put_contents("nameFile.txt", "some text");//открывает/создает, файл для ЧТЕНИЯ и ЗАПИСИ, помещает указатель В НАЧАЛО файла, вводит/добавляет текст "some text"
+file_put_contents("nameFile.txt", "some text");//открывает/создает, файл для ЧТЕНИЯ и ЗАПИСИ, помещает указатель В НАЧАЛО файла, вводит/добавляет текст "some text" ПРИМЕЧАНИЕ: файл каждый раз создаеться заново
 file_get_contents("nameFile.txt");             //открывает и вводит весь файл. пример: echo file_get_contents("nameFile.txt")
+file_exists("someFile.txt");                   //если файл существует то true, иначе false
+file_size("someFile.txt");                     //возвращает количество символов в файле . пример: 14
+rename("nameFile_1.txt", "nameFile_2.txt");    //переименовывает файл nameFile_1.txt на nameFile_2.txt
+unlink("nameFile.txt");                        //удляет файл
 
                         //  ПРИМЕРЫ
     //ПРИМЕР_1
