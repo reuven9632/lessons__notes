@@ -345,7 +345,7 @@ index.html
 
 form.php
     ...
-    if (iiset($_POST["done"])) {
+    if (isset($_POST["done"])) {
         if ($_POST["name"] == "")
             echo "введите имя <a href=#>Исправать</a> ";
         else 

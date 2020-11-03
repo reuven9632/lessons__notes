@@ -1,3 +1,5 @@
 <?php
-  echo $_SERVER["REMOTE_ADDR"];
+  if (isset($_POST["enterButton"])){
+    echo $_SERVER["REMOTE_ADDR"];
+  }
 ?>
