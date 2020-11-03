@@ -11,6 +11,7 @@
 </head>
 
 <body>
+  <?php echo $_SERVER["REMOTE_ADDR"];?>
   <div class="container">
     <!-- /////////////////////////////////////////////// -->
     <div class="test_1">test_animation</div>
