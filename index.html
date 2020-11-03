@@ -11,7 +11,12 @@
 </head>
 
 <body>
-  <?php echo $_SERVER["REMOTE_ADDR"];?>
+  <form method="post" action="php/main.php">
+    <label for="name">name: </label>
+    <input type="text" name="name" placeholder="enter name here">
+    <input type="submit" value="enter">
+  </form>
+  <!--<?php echo $_SERVER["REMOTE_ADDR"];?>  -->
   <div class="container">
     <!-- /////////////////////////////////////////////// -->
     <div class="test_1">test_animation</div>
