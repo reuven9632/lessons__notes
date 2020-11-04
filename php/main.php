@@ -50,7 +50,7 @@
       $subject = "?=utf-8?B?".base64_encode($subject)."?=";       //такое дополнительное кодирование нужно для коректного восприятия от mail.ru
       $headers = "From: $from\r\nReply-to: $from\r\nContent-type: text/plain; charset=utf-8\r\n";     //Content-type: - какой будет текст сообщения, например text/plain; - только обычный текст, text/html; -текст с возможностью использования записи в нем html тегов
       mail($to, $subject, $message, $headers);
-      header ("location: success.php");
+      header ("location: success.php?send=1");        //добавляю ?send=1 для GET запроса чтобы убедиться что пользователь не просто перешел по ссылке схитрив
       exit;
     }
 
