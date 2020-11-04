@@ -22,16 +22,43 @@
     $error_subject = "";
     $error_message = "";
 
+    $haveSomeError = false;
+
 
     //проверяю каждую из заданных переменных на ошибку неверного ввода данных и вывожу 
-    if (trim($from) == "")
-        echo "<div class=\"error__from error\">Please enter the sender`s Email</div>";
-    if (trim($to) == "")
-        echo "<div class=\"error__to error\">Please enter the recipient`s Email</div>";
-    if (trim($subject) == "")
-        echo "<div class=\"error__subject error\">Please enter subject of Email</div>";
-    if (trim($message) == "")
-        echo "<div class=\"error__message error\">Please enter message of Email</div>";
+    if ($from == "" || !preg_match("/@/", $from)){
+      $error_from = "Please enter the sender`s Email";
+      $haveSomeError = true;
+      echo "<div class=\"error__from error\">Please enter the sender`s Email</div>";
+    }
+    if ($to == "" || !preg_match("/@/", $to)){
+      $error_to = "Please enter the recipient`s Email";
+      $haveSomeError = true;
+      echo "<div class=\"error__to error\">Please enter the recipient`s Email</div>";
+    }
+    if (strlen($subject) <=3){
+      $error_subject = "Please enter subject of Email";
+      $haveSomeError = true;
+      echo "<div class=\"error__subject error\">Please enter subject of Email</div>";
+    }
+    if (strlen($message) <= 2){
+      $error_message = "Please enter message";
+      $haveSomeError = true;
+      echo "<div class=\"error__message error\">Please enter message</div>";
+    }
+    if($haveSomeError == false){
+      $subject = "?=utf-8?B?".base64_encode($subject)."?=";       //такое дополнительное кодирование нужно для коректного восприятия от mail.ru
+      $headers = "From: $from\r\nReply-to: $from\r\nContent-type: text/plain; charset=utf-8\r\n";     //Content-type: - какой будет текст сообщения, например text/plain; - только обычный текст, text/html; -текст с возможностью использования записи в нем html тегов
+      mail($to, $subject, $message, $headers);
+      header ("location: success.php");
+      exit;
+    }
+
+
+
+    echo print_r($_POST)."<br/>";
+    echo print_r($_SESSION)."<br/>";
+
   }
   
   
