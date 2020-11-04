@@ -16,16 +16,20 @@
       <h2>ФОРМА ОБРАТНОЙ СВЯЗИ</h2>
   
       <label>от кого:<label/><br/>
-      <input type="text" name="from" placeholder="Введите Email адрес отправителя"/><br/>
+      <input type="text" name="from" placeholder="Введите Email адрес отправителя" value="<?php $_SESSION['from']?>"/><br/>
+      <span style="color^red"><?= $error_from?></span>
   
       <label>Кому:<label/><br/>
-      <input type="text" name="to" placeholder="Введите Email адрес получателя"/><br/>
-  
+      <input type="text" name="to" placeholder="Введите Email адрес получателя" value="<?php $_SESSION['to']?>"/><br/>
+      <span style="color^red"><?= $error_to?></span>
+
       <label>Тема:<label/><br/>
-      <input type=""text" name="subject" placeholder="Введите тему"/><br/>
+      <input type=""text" name="subject" placeholder="Введите тему" value="<?php $_SESSION['subject']?>"/><br/>
+      <span style="color^red"><?= $error_subject?></span>
   
-      <label>message:<label/><br/>
-      <teextarea  name="message" cols="40" rows="10"></textarea><br/>
+      <!-- <label>message:<label/><br/> -->
+      <textarea  name="message" cols="40" rows="10" ><?php $_SESSION["message"]?></textarea><br/>
+      <span style="color^red"><?= $error_message?></span>
   
       <input type="submit" name="send" value="отправить"/>
   </form>
@@ -37,7 +41,7 @@
       <input type="text" name="name" placeholder="enter name here">
       <button name="enterButton">enter</button>
     </form>
-    <?php echo $_SERVER["REMOTE_ADDR"];?>
+    <!-- <?php echo $_SERVER["REMOTE_ADDR"];?> -->
   </section>
   
   <section class="test__animation-section">
