@@ -1,4 +1,4 @@
-        //mysqli_note 1.4
+        //mysqli_note 1.5
 //заходим в phpMyAdmin
 //вводим логин root паролья нет
 //создаем базу данных: имя базы, кодировка: cp1251_general_ci (для ипользования кириллицы) или лучше utf8_ general_ci (для языков включительно китайский)
@@ -27,7 +27,7 @@ INSERT INTO
         ("INSERT INTO `users` (`login`, `password`, `reg_data`) VALUES ('admin', 'MD5("123")', '".time()."')")
 
 UPDATE
-                // 
+                // ОБНОВИТЬ/ ПЕРЕПРИСВОИТЬ 
         ("UPDATE `users` SET `reg_date` = '10' WHERE `login` = 'shop' OR (`id` > 4 AND `id` < 8)")
 
 DELETE FROM
@@ -38,6 +38,10 @@ SELECT
                 // ВЫБРАТЬ
                 // ВЫБРАТЬ всё ИЗ талицы `users`
         ("SELECT * FROM `users`")
+
+SELECT COUNT
+                //ВЫБРАТЬ КОЛИЧЕСТВО
+        ("SELECT COUNT `id` FROM `users` LIMIT 0, 20")
 
 FROM
                 // ИЗ
@@ -57,6 +61,11 @@ ORDER BY
                 // обычно по `id` , затем пишеться по возрастанию (ASC) или по убыванию (DESC)  
         ("SELECT `id`, `login` FROM `users` WHERE `id` > 7" ORDER BY `id` ASC)
 
+LIKE
+                //ПОХОЖ/КАК
+                //% - как звездочка указывает что вместо них могут быть любые символы, %euv, euv%, %euv%     -   от слова reuven
+        ("SELECT * FROM `users` WHERE `ligin` LIKE '%reuv%' LIMIT 0, 20")
+
 VALUES
                 // ЗНАЧЕНИЯ
         ("INSERT INTO `users` (`login`, `password`, `reg_data`) VALUES ('admin', 'MD5("123")', '".time()."')")
@@ -75,6 +84,8 @@ MD5
            MD5('$i')
         
 LIMIT
+                //указывает два параметра: с какой записи начать выборку, сколько записей взять/вывести
+        ("SELECT * FROM `users` LIMIT 0, 20")
         
             //////////////////////////////////////////////////////////////////////////
             //  ЗАПРОСЫ К БД
@@ -98,6 +109,7 @@ $mysqli->query ("SET NAMES 'utf8'");
 $result_set = $mysqli->query ("SELECT * FROM `users`");
 printResult($result_set);
 
+// ПРИМЕР_2:
 $result_set = $mysqli->query ("SELECT `id`, `login` FROM `users` WHERE `id` > 7");
 printResult($result_set);
 $mysqli->close ();
