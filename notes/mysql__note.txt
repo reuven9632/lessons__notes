@@ -1,0 +1,78 @@
+        //mysqli_note 1.1
+//заходим в phpMyAdmin
+//вводим логин root паролья нет
+//создаем базу данных: имя базы, кодировка: cp1251_general_ci (для ипользования кириллицы) или лучше utf8_ general_ci (для языков включительно китайский)
+//создаю таблицу: имя таблицы, кол-во столбцов(можно потом добавить и удалить) 
+//назначаем столбцы: первый id, тип int, длина цифры 11(символов), значение по умолчанию: нет,
+//кодировка: нет(так как это нужно для использования доп. цифр как арабские), атрибуты: UNSIGNET(только положительные), NULL : пусто(наш id не может быть пустым), 
+//индекс: PRIMARY(единственное значение, только одно поле в таблице может быть)/UNIQUE(может быть несколько элементов таблицы, НО используеться для логина допустим так как он единственный у другого пользователя не может быть такой же)
+//auto incriment(A_I) значит что при добавлении пользователя автоматически будет увеличиваться: да
+
+
+
+            //////////////////////////////////////////////////////////////////////////
+            //  ЗНАЧЕНИЕ ЗАПРОСОВ mysqli
+$mysqli = new mysqli ("localhost", "root", "mybase");       //создаю переменную которая будет подключаться к БД моего ХОСТА (хост, имя пользователя, пароль, имяБД);
+$mysqli->query ("SET NAMES 'utf8'");                        //query - посылает запрос, устанавливаем кодировку "SET NAMES 'utf8'" для избежания ошибок в дальнейшем
+$mysqli->close ();                                          //ВАЖНО: в конце использования mysqli соединения мы дожны его закрывать  $mysqli->close();
+
+SET NAMES
+("SET NAMES 'utf8'")
+
+INSERT INTO
+//(ВСТАВИТЬ В) - вставить в оперделенную таблицу `users`
+//ВСТАВИТЬ В талицу `users` в столбцы(`login`, `password`, `reg_data`)
+("INSERT INTO `users` (`login`, `password`, `reg_data`) VALUES ('admin', 'MD5("123")', '".time()."')")
+
+VALUES
+//(ЗНАЧЕНИЯ)
+("INSERT INTO `users` (`login`, `password`, `reg_data`) VALUES ('admin', 'MD5("123")', '".time()."')")
+
+UPDATE
+("UPDATE `users` SET `reg_date` = '10' WHERE `login` = 'shop' OR (`id` > 4 AND `id` < 8)")
+
+DELETE FROM
+("DELETE FROM" `users` WHERE `id` = 5")
+
+WHERE
+("DELETE FROM" `users` WHERE `id` = 5")
+
+OR
+("UPDATE `users` SET `reg_date` = '10' WHERE `login` = 'shop' OR (`id` > 4 AND `id` < 8)")
+
+AND
+("UPDATE `users` SET `reg_date` = '10' WHERE `login` = 'shop' OR (`id` > 4 AND `id` < 8)")
+
+
+            //////////////////////////////////////////////////////////////////////////
+            //  ОБЩАЯ ЗАПИСЬ mysqli ЗАПРОСА
+$mysqli = new mysqli ("localhost", "root", "mybase");       //создаю переменную которая будет подключаться к БД моего ХОСТА (хост, имя пользователя, пароль, имяБД);
+$mysqli->query ("SET NAMES 'utf8'");                        //query - посылает запрос, устанавливаем кодировку "SET NAMES 'utf8'" для избежания ошибок в дальнейшем
+//здесь основной код
+$mysqli->close ();                                          //ВАЖНО: в конце использования mysqli соединения мы дожны его закрывать  $mysqli->close();
+
+
+
+            //////////////////////////////////////////////////////////////////////////
+            //  ДОБАВЛЕНИЕ ЗАПИСЕЙ В БД
+$mysqli = new mysqli ("localhost", "root", "mybase");   
+$mysqli->query ("SET NAMES 'utf8'");  
+$success = $mysqli->query ("INSERT INTO `users` (`login`, `password`, `reg_data`) VALUES ('admin', 'MD5("123")', '".time()."')");
+echo $success;
+
+for($i = 0; $i < 10; $i++)
+    $mysql->query         ("INSERT INTO `users` (`login`, `password`, `reg_data`) VALUES ('$i', '".md5('$i')."', '".time()."')");
+
+$mysqli->query ("UPDATE `users` SET `reg_date` = '10' WHERE `login` = 'shop' OR (`id` > 4 AND `id` < 8)");
+
+$mysqli->query ("DELETE FROM" `users` WHERE `id` = 5");                     //удалит пользователя из БД `users` в столбце `id` под номером 5
+$mysqli->query ("DELETE FROM" `users` WHERE `id` => 4 AND `id` < 7");       //удалит пользователей из БД `users` в столбце `id` равному или больше 4 и меньше 7
+$mysqli->query ("DELETE FROM" `users`");                                    //удалит всё из БД `users`
+
+$mysqli->close ();
+
+
+
+            //////////////////////////////////////////////////////////////////////////
+            //  ПРАВИЛА ЗАПИСИ query ЗАПРОСА
+//запросы пишуться в ВЕРХНЕМ РЕГИСТРЕ(хотя можно и в нижнем, но правилом хорошего кода считаеться в ВЕРХНЕМ РЕГИСТРЕ)
