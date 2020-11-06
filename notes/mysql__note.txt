@@ -1,4 +1,4 @@
-        //mysqli_note 1.3
+        //mysqli_note 1.4
 //заходим в phpMyAdmin
 //вводим логин root паролья нет
 //создаем базу данных: имя базы, кодировка: cp1251_general_ci (для ипользования кириллицы) или лучше utf8_ general_ci (для языков включительно китайский)
@@ -16,19 +16,11 @@ $mysqli = new mysqli ("localhost", "root", "mybase");       //создаю пе�
 $mysqli->query ("SET NAMES 'utf8'");                        //query - посылает запрос, устанавливаем кодировку "SET NAMES 'utf8'" для избежания ошибок в дальнейшем
 $mysqli->close ();                                          //ВАЖНО: в конце использования mysqli соединения мы дожны его закрывать  $mysqli->close();
 
+(( SELECT/ INSERT INTO/ UPDATE/ DELETE FROM) ( FROM/ SET) ( WHERE/ ORDER BY))
+
 SET NAMES
         ("SET NAMES 'utf8'")
-
-SELECT
-                // ВЫБРАТЬ
-                // ВЫБРАТЬ всё ИЗ талицы `users`
-        ("SELECT * FROM `users`")
-
-FROM
-                // ИЗ
-                // ВЫБРАТЬ всё ИЗ талицы `users`
-        ("SELECT * FROM `users`")
-
+        
 INSERT INTO
                 // ВСТАВИТЬ В
                 // ВСТАВИТЬ В талицу `users` в столбцы(`login`, `password`, `reg_data`) ЗНАЧЕНИЯ ('admin', 'MD5("123")', '".time()."')
@@ -42,10 +34,16 @@ DELETE FROM
                 // УДАЛИТЬ ИЗ
         ("DELETE FROM" `users` WHERE `id` = 5")
 
-VALUES
-                // ЗНАЧЕНИЯ
-        ("INSERT INTO `users` (`login`, `password`, `reg_data`) VALUES ('admin', 'MD5("123")', '".time()."')")
+SELECT
+                // ВЫБРАТЬ
+                // ВЫБРАТЬ всё ИЗ талицы `users`
+        ("SELECT * FROM `users`")
 
+FROM
+                // ИЗ
+                // ВЫБРАТЬ всё ИЗ талицы `users`
+        ("SELECT * FROM `users`")
+   
 SET
                 // УСТАНОВИТЬ/ПРИСВОИТЬ
         ("UPDATE `users` SET `reg_date` = '10' WHERE `login` = 'shop' OR (`id` > 4 AND `id` < 8)")
@@ -54,9 +52,15 @@ WHERE
                 // ГДЕ/ПРИ УСЛОВИИ
         ("DELETE FROM" `users` WHERE `id` = 5")
 
-LIMIT
+ORDER BY 
+                //ВЫБОРКА ИЗ
+                // обычно по `id` , затем пишеться по возрастанию (ASC) или по убыванию (DESC)  
+        ("SELECT `id`, `login` FROM `users` WHERE `id` > 7" ORDER BY `id` ASC)
 
-
+VALUES
+                // ЗНАЧЕНИЯ
+        ("INSERT INTO `users` (`login`, `password`, `reg_data`) VALUES ('admin', 'MD5("123")', '".time()."')")
+   
 OR
                 // ИЛИ
         ("UPDATE `users` SET `reg_date` = '10' WHERE `login` = 'shop' OR (`id` > 4 AND `id` < 8)")
@@ -69,8 +73,9 @@ MD5
         '".md5("$i")."'
           'MD5("$i")'
            MD5('$i')
-
-
+        
+LIMIT
+        
             //////////////////////////////////////////////////////////////////////////
             //  ЗАПРОСЫ К БД
 ->query                 -       запрос на сервер                    пример: $mysqli->query (SELECT * FROM `users`);
