@@ -1,4 +1,4 @@
-        //mysqli_note 1.1
+        //mysqli_note 1.2
 //заходим в phpMyAdmin
 //вводим логин root паролья нет
 //создаем базу данных: имя базы, кодировка: cp1251_general_ci (для ипользования кириллицы) или лучше utf8_ general_ci (для языков включительно китайский)
@@ -17,58 +17,104 @@ $mysqli->query ("SET NAMES 'utf8'");                        //query - посыл
 $mysqli->close ();                                          //ВАЖНО: в конце использования mysqli соединения мы дожны его закрывать  $mysqli->close();
 
 SET NAMES
-("SET NAMES 'utf8'")
+        ("SET NAMES 'utf8'")
+
+SELECT
+                // ВЫБРАТЬ
+                // ВЫБРАТЬ всё ИЗ талицы `users`
+        ("SELECT * FROM `users`")
+
+FROM
+                // ИЗ
+                // ВЫБРАТЬ всё ИЗ талицы `users`
+        ("SELECT * FROM `users`")
 
 INSERT INTO
-//(ВСТАВИТЬ В) - вставить в оперделенную таблицу `users`
-//ВСТАВИТЬ В талицу `users` в столбцы(`login`, `password`, `reg_data`)
-("INSERT INTO `users` (`login`, `password`, `reg_data`) VALUES ('admin', 'MD5("123")', '".time()."')")
-
-VALUES
-//(ЗНАЧЕНИЯ)
-("INSERT INTO `users` (`login`, `password`, `reg_data`) VALUES ('admin', 'MD5("123")', '".time()."')")
+                // ВСТАВИТЬ В
+                // ВСТАВИТЬ В талицу `users` в столбцы(`login`, `password`, `reg_data`) ЗНАЧЕНИЯ ('admin', 'MD5("123")', '".time()."')
+        ("INSERT INTO `users` (`login`, `password`, `reg_data`) VALUES ('admin', 'MD5("123")', '".time()."')")
 
 UPDATE
-("UPDATE `users` SET `reg_date` = '10' WHERE `login` = 'shop' OR (`id` > 4 AND `id` < 8)")
+                // 
+        ("UPDATE `users` SET `reg_date` = '10' WHERE `login` = 'shop' OR (`id` > 4 AND `id` < 8)")
 
 DELETE FROM
-("DELETE FROM" `users` WHERE `id` = 5")
+                // УДАЛИТЬ ИЗ
+        ("DELETE FROM" `users` WHERE `id` = 5")
+
+VALUES
+                // ЗНАЧЕНИЯ
+        ("INSERT INTO `users` (`login`, `password`, `reg_data`) VALUES ('admin', 'MD5("123")', '".time()."')")
+
+SET
+                // УСТАНОВИТЬ/ПРИСВОИТЬ
+        ("UPDATE `users` SET `reg_date` = '10' WHERE `login` = 'shop' OR (`id` > 4 AND `id` < 8)")
 
 WHERE
-("DELETE FROM" `users` WHERE `id` = 5")
+                // ГДЕ/ПРИ УСЛОВИИ
+        ("DELETE FROM" `users` WHERE `id` = 5")
+
+LIMIT
+
 
 OR
-("UPDATE `users` SET `reg_date` = '10' WHERE `login` = 'shop' OR (`id` > 4 AND `id` < 8)")
+                // ИЛИ
+        ("UPDATE `users` SET `reg_date` = '10' WHERE `login` = 'shop' OR (`id` > 4 AND `id` < 8)")
 
 AND
-("UPDATE `users` SET `reg_date` = '10' WHERE `login` = 'shop' OR (`id` > 4 AND `id` < 8)")
+                // И
+        ("UPDATE `users` SET `reg_date` = '10' WHERE `login` = 'shop' OR (`id` > 4 AND `id` < 8)")
+
+MD5
+        '".md5("$i")."'
+          'MD5("$i")'
+           MD5('$i')
 
 
             //////////////////////////////////////////////////////////////////////////
             //  ОБЩАЯ ЗАПИСЬ mysqli ЗАПРОСА
 $mysqli = new mysqli ("localhost", "root", "mybase");       //создаю переменную которая будет подключаться к БД моего ХОСТА (хост, имя пользователя, пароль, имяБД);
 $mysqli->query ("SET NAMES 'utf8'");                        //query - посылает запрос, устанавливаем кодировку "SET NAMES 'utf8'" для избежания ошибок в дальнейшем
-//здесь основной код
+        //здесь основной код
 $mysqli->close ();                                          //ВАЖНО: в конце использования mysqli соединения мы дожны его закрывать  $mysqli->close();
 
 
 
             //////////////////////////////////////////////////////////////////////////
             //  ДОБАВЛЕНИЕ ЗАПИСЕЙ В БД
+ПРИМЕР_1:
 $mysqli = new mysqli ("localhost", "root", "mybase");   
 $mysqli->query ("SET NAMES 'utf8'");  
-$success = $mysqli->query ("INSERT INTO `users` (`login`, `password`, `reg_data`) VALUES ('admin', 'MD5("123")', '".time()."')");
-echo $success;
+$success = $mysqli->query ("INSERT INTO `users` (`login`, `password`, `reg_data`) VALUES ('admin', MD5('123'), '".time()."')");
+echo $success;                                                             //если запрос будет выполнен коректно то выведет true иначе false
+$mysqli->close ();
 
+ПРИМЕР_2:
+$mysqli = new mysqli ("localhost", "root", "mybase");   
+$mysqli->query ("SET NAMES 'utf8'"); 
 for($i = 0; $i < 10; $i++)
-    $mysql->query         ("INSERT INTO `users` (`login`, `password`, `reg_data`) VALUES ('$i', '".md5('$i')."', '".time()."')");
+    $mysql->query ("INSERT INTO `users` (`login`, `password`, `reg_data`) VALUES ('$i', '".md5("$i")."', '".time()."')");
+$mysqli->close ();
 
-$mysqli->query ("UPDATE `users` SET `reg_date` = '10' WHERE `login` = 'shop' OR (`id` > 4 AND `id` < 8)");
 
-$mysqli->query ("DELETE FROM" `users` WHERE `id` = 5");                     //удалит пользователя из БД `users` в столбце `id` под номером 5
-$mysqli->query ("DELETE FROM" `users` WHERE `id` => 4 AND `id` < 7");       //удалит пользователей из БД `users` в столбце `id` равному или больше 4 и меньше 7
-$mysqli->query ("DELETE FROM" `users`");                                    //удалит всё из БД `users`
 
+            //////////////////////////////////////////////////////////////////////////
+            //  ИЗМЕНЕНИЕ/ОБНОВЛЕНИЕ ЗАПИСЕЙ В БД
+ПРИМЕР_1:
+$mysqli = new mysqli ("localhost", "root", "mybase");   
+$mysqli->query ("SET NAMES 'utf8'");
+$mysqli->query ("UPDATE `users` SET `reg_date` = '10' WHERE `login` = 'shop' OR (`id` > 4 AND `id` < 8)"); //заменить в таблице `users`   `reg_date` на 10    ГДЕ  `login` = 'shop' OR (`id` > 4 AND `id` < 8)
+$mysqli->close ();
+
+
+
+            //////////////////////////////////////////////////////////////////////////
+            //  УДАЛЕНИЕ ЗАПИСЕЙ ИЗ БД
+$mysqli = new mysqli ("localhost", "root", "", "mybase");
+$mysqli->query("SET NAMES utf8");
+$mysqli->query ("DELETE FROM `users` WHERE `id` = 5");                     //удалит пользователя из БД `users` в столбце `id` под номером 5
+$mysqli->query ("DELETE FROM `users` WHERE `id` => 4 AND `id` < 7");       //удалит пользователей из БД `users` в столбце `id` равному или больше 4 и меньше 7
+$mysqli->query ("DELETE FROM `users`");                                    //удалит всё из БД `users`
 $mysqli->close ();
 
 
