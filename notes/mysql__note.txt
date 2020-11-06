@@ -71,28 +71,29 @@ MD5
            MD5('$i')
 
 
-
-
             //////////////////////////////////////////////////////////////////////////
             //  ЗАПРОСЫ К БД
-->query
-->featch_assoc()
-->num_rows
+->query                 -       запрос на сервер                    пример: $mysqli->query (SELECT * FROM `users`);
+->featch_assoc()        -       выводит строку из заблицы.          пример: $result_set->featch_assoc()
+->num_rows              -       выводит количество строк в таблице. пример: $result_set->num_rows
 
             //////////////////////////////////////////////////////////////////////////
             //  ВЫБОРКА ЗАПИСЕЙ В БД
-ПРИМЕР_1:
+// ПРИМЕР_1:
 function printResult ($result_set) {
+    echo "количество записей равно = ".$result_set->num_rows."<br/><hr/>";
     while ($row = $result_set->featch_assoc() != false){
         //print_r ($row);
         echo $row["login"]."<br/>";
 
     }
-    echo "количество записей равно = ".$result_set->num_rows."<br/><hr/>";
 }
 $mysqli = new mysqli ("localhost", "root", "mybase");   
 $mysqli->query ("SET NAMES 'utf8'");  
-$result_set = $mysqli->query (SELECT * FROM `users`);
+$result_set = $mysqli->query ("SELECT * FROM `users`");
+printResult($result_set);
+
+$result_set = $mysqli->query ("SELECT `id`, `login` FROM `users` WHERE `id` > 7");
 printResult($result_set);
 $mysqli->close ();
 
