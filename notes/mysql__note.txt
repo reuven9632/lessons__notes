@@ -1,4 +1,4 @@
-        //mysqli_note 1.5
+        //mysqli_note 1.6
 //заходим в phpMyAdmin
 //вводим логин root паролья нет
 //создаем базу данных: имя базы, кодировка: cp1251_general_ci (для ипользования кириллицы) или лучше utf8_ general_ci (для языков включительно китайский)
@@ -10,6 +10,45 @@
 
 
 
+
+            //////////////////////////////////////////////////////////////////////////
+            //ОБЩАЯ ЗАПИСЬ ИСПОЛЬЗОВАНИЯ mysqli
+if (isset($_POST[...])){
+        $mysqli = new mysqli ("localhost", "root", "pass", "OpenMyDataBase");
+        ...
+        $mysqli->close();
+}
+
+                // ПРИМЕР
+<?php
+require_once "configs.php";
+
+$mysqli = false;
+function conectionDB (){
+        global $mysqli;
+        $mysqli = new mysqli (HOST, HOST_NAME, PASSWORD, MY_DB);
+        $mysqli->query ("SET NAMES utf8");
+}
+function resultSetToArray ($result_set){
+        $array[] = new array();
+        while($row = $result_set.featch_assoc() != false){
+                $array[] = $row;
+                return $array;
+        }
+
+}
+function closeDB (){
+        global $mysqli;
+        $mysqli->close;
+}
+function getDB_ToArrayRows ($query){
+        global $mysqli;
+        conectionDB();
+        $result_set = $mysqli->query($query);
+        closeDB()
+        retutn resultSetToArray($result_set);
+}
+?>
             //////////////////////////////////////////////////////////////////////////
             //  ЗНАЧЕНИЕ ЗАПРОСОВ mysqli
 $mysqli = new mysqli ("localhost", "root", "mybase");       //создаю переменную которая будет подключаться к БД моего ХОСТА (хост, имя пользователя, пароль, имяБД);
