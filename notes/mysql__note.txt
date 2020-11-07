@@ -10,6 +10,9 @@
 
 
 
+//хостинг - тоесть определенный сервер
+//домен   - название самого сайта
+
 
             //////////////////////////////////////////////////////////////////////////
             //ОБЩАЯ ЗАПИСЬ ИСПОЛЬЗОВАНИЯ mysqli
@@ -33,15 +36,14 @@ function resultSetToArray ($result_set){
         $array[] = new array();
         while($row = $result_set.featch_assoc() != false){
                 $array[] = $row;
-                return $array;
         }
-
+        return $array;
 }
 function closeDB (){
         global $mysqli;
         $mysqli->close;
 }
-function getDB_ToArrayRows ($query){
+function getFields ($query){
         global $mysqli;
         conectionDB();
         $result_set = $mysqli->query($query);
