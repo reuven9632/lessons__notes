@@ -1,0 +1,3 @@
+               //jQuery__note 1.0
+
+.prop("disabled", true);     //отключает(неактивный в случае с button) или включает(активный в случае с button) объект с искомым селектором. имеет два параметра первыйуказываю disabled, а вторым указываю true or false $("#IDselector").prop("disabled", true);      $("#IDselector").prop("disabled", false);
