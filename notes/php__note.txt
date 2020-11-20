@@ -224,7 +224,7 @@ form.php
         if ($_POST["name"] == "")
             echo "введите имя <a href=#>Исправать</a> ";
         else 
-            header (location: index.php)
+            header ('location: index.php');
     }
                     ///////////////////////
                     //  ФОРМА ОБРАТНОЙ СВЯЗИ
